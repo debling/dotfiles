@@ -1,9 +1,9 @@
 (use-package perspective
-  :config (persp-mode t))
-
-(use-package persp-projectile
+  :hook (after-init . persp-mode)
   :bind (:map projectile-command-map
-	      ("p" . projectile-persp-switch-project)))
+	      ("p" . projectile-persp-switch-project))
+  :config
+  (use-package persp-projectile))
 
 (use-package windmove
   :bind (:map evil-normal-state-map
