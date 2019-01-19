@@ -1,0 +1,8 @@
+[Unit]
+Description=Newsboat synchronization service
+After=network.target network-online.target dbus.socket
+
+[Service]
+Environment="DISPLAY=:0"
+Type=oneshot
+ExecStart=/usr/bin/newsboat -x reload

@@ -1,0 +1,78 @@
+set realname = "Denílson dos Santos Ebling"
+set from = "d.ebling8@gmail.com"
+set charset = "utf-8"
+set send_charset = "utf-8"
+set assumed_charset = "utf-8"
+
+set ssl_force_tls = yes
+set ssl_starttls=yes
+set ssl_use_sslv2=no
+set ssl_use_sslv3=no
+set ssl_use_tlsv1=no
+set ssl_use_tlsv1_1=no
+set ssl_use_tlsv1_2=yes
+set ssl_verify_dates=yes
+set ssl_verify_host=yes
+
+set pgp_self_encrypt = yes
+set pgp_use_gpg_agent = yes
+set crypt_verify_sig = yes
+set crypt_autosign = yes
+
+macro index 1 "<change-folder> =./<enter>"
+macro index r "!mbsync -c ~/.mbsyncrc -a^M" "Update through mbsync"
+
+auto_view text/html
+
+set move = no
+
+set smtp_url = "smtp://d.ebling8@smtp.gmail.com:587"
+set smtp_pass=`pass gmail/isync`
+set smtp_authenticators="gssapi:login"
+set smtp_authenticators = "login"
+
+set folder = "~/.mail/d.ebling8"
+set spoolfile = "~/.mail/d.ebling8/Inbox"
+set postponed = "~/.mail/d.ebling8/[Gmail]/Rascunhos"
+set record = "~/.mail/d.ebling8/[Gmail]/E-mails\ enviados"
+set trash = "~/.mail/d.ebling8/[Gmail]/Lixeira"
+mailboxes = +Inbox +[Gmail]/E-mails\ enviados +[Gmail]/Importante +[Gmail]/Lixeira +[Gmail]/Rascunhos  +[Gmail]/Todos\ os\ e-mails
+
+shutdown-hook 'exec sync-mailbox'
+
+set edit_headers=yes
+set mailcap_path = "~/.mutt/mailcap"
+auto_view application/pdf
+alternative_order text/plain text/enriched text/html
+set rfc2047_parameters = yes
+set editor = "emacsclient -t "
+set sort = 'reverse-date'
+
+# View attachments properly.
+bind attach <return> view-mailcap
+set fast_reply           # skip to compose when replying
+set fcc_attach           # save attachments with the body
+unset mime_forward       # forward attachments as part of body
+set forward_format = "Fwd: %s"       # format of subject when forwarding
+set forward_decode                   # decode when forwarding
+set forward_quote                    # include message in forwards
+set reverse_name                     # reply as whomever it was to
+set include
+
+# Sidebar mappings
+set sidebar_visible = yes
+set sidebar_width = 25
+set sidebar_short_path = yes
+set sidebar_next_new_wrap = yes
+set mail_check_stats
+set sidebar_format = '%B%?F? [%F]?%* %?N?%N/? %?S?%S?'
+bind index,pager \Ck sidebar-prev
+bind index,pager \Cj sidebar-next
+bind index,pager \Co sidebar-open
+bind index,pager \Cp sidebar-prev-new
+bind index,pager \Cn sidebar-next-new
+bind index,pager B sidebar-toggle-visible
+
+source ~/.mutt/vim-keys.rc
+source ~/.mutt/gpg.rc
+source ~/.mutt/base16.muttrc

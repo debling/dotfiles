@@ -1,0 +1,56 @@
+show-keymap-hint false
+swap-title-and-hints false
+
+external-url-viewer "urlview"
+browser firefox
+
+notify-program "/usr/bin/notify-send"
+
+bind-key j next
+bind-key k prev
+bind-key J next-feed
+bind-key K prev-feed
+bind-key j down article
+bind-key k up article
+bind-key J next article
+bind-key K prev article
+bind-key G end
+bind-key g home
+bind-key d pagedown
+bind-key u pageup
+bind-key l open
+bind-key h quit
+bind-key a toggle-article-read
+bind-key n next-unread
+bind-key N prev-unread
+bind-key D pb-download
+bind-key U show-urls
+bind-key x pb-delete
+
+macro , open-in-browser
+macro v set browser "setsid nohup mpv"; open-in-browser ; set browser linkhandler
+macro w set browser "w3m"; open-in-browser ; set browser linkhandler
+macro p set browser "dmenuhandler"; open-in-browser ; set browser linkhandler
+# c copies the link to the clipboard.
+# The line below is probably the skiddiest line I've ever written.
+macro c set browser "copy(){ echo $1 | xclip ;}; copy "; open-in-browser ; set browser linkhandler
+
+# Light Solarized color scheme for newsbeuter, based on
+# Ethan Schoonover's Solarized.
+#
+# In order to use this color scheme, you must first configure
+# your terminal emulator to use the Solarized palette.
+# See <http://ethanschoonover.com/solarized/> for more information.
+
+color background         default   default
+color listnormal         default   default
+color listnormal_unread  default   default
+color listfocus          white     yellow bold
+color listfocus_unread   white     yellow bold
+color info               black      white
+color article            default   default
+
+# highlights
+highlight article "^(Title):.*$" blue default
+highlight article "https?://[^ ]+" red default
+highlight article "\\[image\\ [0-9]+\\]" green default

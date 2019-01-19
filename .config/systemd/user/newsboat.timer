@@ -1,0 +1,10 @@
+[Unit]
+Description=Newsboat synchronization timer
+
+[Timer]
+OnBootSec=1m
+OnUnitActiveSec=60m
+Unit=newsboat.service
+
+[Install]
+WantedBy=timers.target

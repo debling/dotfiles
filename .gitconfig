@@ -1,0 +1,8 @@
+[user]
+	email = d.ebling8@gmail.com
+	name = Denílson dos Santos Ebling
+	signingkey = CCBC8AA1AF062142
+[gpg]
+	program = gpg2
+[commit]
+	gpgSign = true
