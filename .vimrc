@@ -34,6 +34,8 @@ call plug#begin('~/.vim/plugged')
 
 call plug#end()
 
+let mapleader=" "
+
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
