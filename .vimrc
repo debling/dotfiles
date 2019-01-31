@@ -21,7 +21,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 call plug#begin('~/.vim/plugged')
 
-	Plug 'chriskempson/base16-vim'
 	Plug 'terryma/vim-multiple-cursors'
 	Plug 'tpope/vim-surround'
 	Plug 'SirVer/ultisnips'
@@ -31,6 +30,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'justinmk/vim-sneak'
 	Plug 'tpope/vim-repeat'
 	Plug 'guns/vim-sexp'
+	Plug 'lifepillar/vim-solarized8'
 
 call plug#end()
 
@@ -43,14 +43,15 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:multi_cursor_exit_from_visual_mode=0
 let g:multi_cursor_exit_from_insert_mode=0
 
-filetype plugin indent on
-
-if filereadable(expand("~/.vimrc_background"))
-	  let base16colorspace=256
-	    source ~/.vimrc_background
-    endif
-
+set termguicolors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 syntax enable
+set background=light
+let g:solarized_term_italics=1
+colorscheme solarized8
+
+filetype plugin indent on
 
 au FileType php setl ofu=phpcomplete#CompletePHP
 au FileType ruby,eruby setl ofu=rubycomplete#Complete
