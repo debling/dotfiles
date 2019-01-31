@@ -65,8 +65,9 @@
   :hook (prog-mode .  rainbow-delimiters-mode))
 
 (use-package nlinum-relative
-  :bind (:map evil-normal-state-local-map
+  :bind (:map evil-normal-state-map
 	      ("<f7>" . nlinum-mode))
+  :hook (nlinum-mode . nlinum-relative-on)
   :config
   (setq nlinum-format "%d ")
   (nlinum-relative-setup-evil))
