@@ -1,11 +1,8 @@
 # Unison preferences file
-path = Uni
-path = Music
-path = Books
-path = learning
 path = Org
-path = repos
-path = wrkspc
+path = Scripts
+path = Uni
+path = Workspace
 prefer = newer
 root = /home/dse/
 root = ssh://dse@192.168.25.8/
