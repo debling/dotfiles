@@ -35,6 +35,8 @@ macro p set browser "dmenuhandler"; open-in-browser ; set browser linkhandler
 # The line below is probably the skiddiest line I've ever written.
 macro c set browser "copy(){ echo $1 | xclip ;}; copy "; open-in-browser ; set browser linkhandler
 
+text-width 70
+
 # Light Solarized color scheme for newsbeuter, based on
 # Ethan Schoonover's Solarized.
 #
