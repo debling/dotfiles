@@ -1,10 +1,30 @@
 (let ((file-name-handler-alist nil))
 
+  (package-initialize)
+
   (setq gc-cons-threshold most-positive-fixnum
 	load-prefer-newer t
-	xterm-query-timeout nil)
+	xterm-query-timeout nil
+	package--init-file-ensured t
+	package-enable-at-startup nil
+	package-archives '(("org"       . "http://orgmode.org/elpa/")
+			   ("gnu"       . "http://elpa.gnu.org/packages/")
+			   ("melpa"     . "http://melpa.org/packages/"))
+	fill-column 80
+	vc-follow-symlinks t
+	word-wrap t
+	truncate-lines nil
+	backup-directory-alist		'(("." . "~/.cache/emacs/backup/"))
+	auto-save-file-name-transforms 	'((".*" "~/.cache/emacs/autosave/" t))
+	delete-old-versions t
+	kept-new-versions 6
+	kept-old-versions 2
+	version-control t
+	scroll-conservatively 100
+	dired-dwim-target t
+	system-packages-noconfirm t)
 
-  (package-initialize)
+
   (unless (package-installed-p 'use-package)
     (package-refresh-contents)
     (package-install 'use-package))
@@ -33,24 +53,7 @@
   (set-register ?p '(file . "~/.config/polybar/config"))
   (set-register ?q '(file . "~/.config/qutebrowser/config.py"))
 
-  (setq package--init-file-ensured t
-	package-enable-at-startup nil
-	package-archives '(("org"       . "http://orgmode.org/elpa/")
-                           ("gnu"       . "http://elpa.gnu.org/packages/")
-                           ("melpa"     . "http://melpa.org/packages/"))
-	fill-column 80
-	vc-follow-symlinks t
-	word-wrap t
-	truncate-lines nil
-	backup-directory-alist		'(("." . "~/.cache/emacs/backup/"))
-	auto-save-file-name-transforms 	'((".*" "~/.cache/emacs/autosave/" t))
-	delete-old-versions t
-	kept-new-versions 6
-	kept-old-versions 2
-	version-control t
-	scroll-conservatively 100
-	dired-dwim-target t
-	system-packages-noconfirm t)
+  (use-package use-package-ensure-system-package)
 
   (use-package delight
     :config
@@ -202,7 +205,7 @@
  '(org-agenda-files (quote ("/home/dse/Org/Agenda/AFazeres.org")))
  '(package-selected-packages
    (quote
-    (treemacs ccls solarized-theme persp-projectile perspective lsp-java dap-mode lsp-ui company-lsp lsp-mode dap-java evil-collection delight slime-company slime edit-indirect edit-inditect markdown-mode org-mime mu4e-alert olivetti geiser tide typescript-mode doom-thems clojure-mode-extra-font-locking flycheck-clojure flucheck-clojure clojure-snippets clojure-mode-extra-font-lock cider litable color-theme-solarized auto-compile zoom sql-indent auctex-latexmk php-auto-yasnippets hindent company-reftex company-bibtex auctecx company-shell xclip auto-sudoedit benchmark-init dashboard ac-html-bootstrap ac-html-angular company-irony-c-headers common-lisp-snippets common-lispcommon-lisp-snippets eros use-package-ensure-system-package intero haskell-mode sqlup-mode plantuml-mode company-go counsel-gtags counsel whitch-key nasm-mode dracula base16-themes org-projectile graphviz-dot-mode evil-org org-pdfview company-auctex which-key org-ref flyspell-popup rainbow-mode page-break-lines base16-theme htmlize helm-themes phpunit ac-php impatient-mode web-mode-edit-element company-php projectile counsel-projectile ggtags openwith org-bullets doom-themes disaster emmet-mode company-elisp company-web web-mode yasnippet-snippets use-package try sudo-edit rainbow-delimiters org-plus-contrib nlinum-relative magit irony-eldoc helm-gtags flycheck-clang-analyzer evil-smartparens evil-mc dracula-theme diminish company-statistics company-irony company-c-headers ace-window)))
+    (use-package-ensure-system-package org-projectile persp-projectile use-package async delight dap-java edit-inditect doom-thems flucheck-clojure clojure-mode-extra-font-lock litable color-theme-solarized auctex-latexmk php-auto-yasnippets company-reftex company-bibtex auctecx ac-html-bootstrap ac-html-angular common-lispcommon-lisp-snippets whitch-key nasm-mode dracula base16-themes graphviz-dot-mode org-pdfview org-ref flyspell-popup helm-themes phpunit ac-php ggtags disaster company-elisp sudo-edit org-plus-contrib helm-gtags dracula-theme diminish company-c-headers)))
  '(vc-annotate-background nil)
  '(vc-annotate-background-mode nil)
  '(vc-annotate-color-map
