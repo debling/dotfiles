@@ -56,3 +56,10 @@ color article            default   default
 highlight article "^(Title):.*$" blue default
 highlight article "https?://[^ ]+" red default
 highlight article "\\[image\\ [0-9]+\\]" green default
+
+podcast-auto-enqueue yes
+
+##### Podboat
+
+download-path ~/Music/Podcasts/%n/
+player "mpv"
