@@ -24,15 +24,16 @@
 	version-control t
 	scroll-conservatively 100
 	dired-dwim-target t
-	system-packages-noconfirm t)
-
+	system-packages-noconfirm t
+	user-mail-address "d.ebling8@gmail.com"
+	user-full-name "Denílson dos Santos Ebling")
 
   (unless (package-installed-p 'use-package)
     (package-refresh-contents)
     (package-install 'use-package))
   (setq-default use-package-always-ensure t)
 
-  (add-to-list 'load-path (concat user-emacs-directory "elisp"))
+  (add-to-list 'load-path (expand-file-name (concat user-emacs-directory "elisp")))
   (add-to-list 'term-file-aliases '("st-256color" . "xterm"))
 
   (set-charset-priority 'unicode)
