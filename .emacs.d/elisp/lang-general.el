@@ -16,7 +16,7 @@
   (defun switch-dictionary()
     (interactive)
     (let* ((dic ispell-current-dictionary)
-    	   (change (if (string= dic "pt_BR") "en_US" "pt_BR")))
+	   (change (if (string= dic "pt_BR") "en_US" "pt_BR")))
       (ispell-change-dictionary change)
       (message "Dictionary switched from %s to %s" dic change)))
   (defun flyspell-buffer-after-pdict-save (&rest _)
@@ -40,7 +40,7 @@
 (use-package yasnippet
   :delight yas-minor-mode
   :hook ((term-mode-hook . (lambda()
-                             (yas-minor-mode -1)))
+			     (yas-minor-mode -1)))
 	 (after-init . yas-global-mode))
   :config
   (use-package yasnippet-snippets))
@@ -49,11 +49,11 @@
   :commands global-company-mode
   :delight
   :bind (:map company-active-map
-  	      ("C-n" . company-select-next)
-  	      ("C-p" . company-select-previous)
-  	      ("M-n" . nil)
-  	      ("M-p" . nil)
-  	      ("SPC" . nil))
+	      ("C-n" . company-select-next)
+	      ("C-p" . company-select-previous)
+	      ("M-n" . nil)
+	      ("M-p" . nil)
+	      ("SPC" . nil))
   :config
   (setq company-idle-delay 0.3
 	company-minimum-prefix-length 0
