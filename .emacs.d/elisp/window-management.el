@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (use-package perspective
   :hook (after-init . persp-mode)
   :bind (:map projectile-command-map

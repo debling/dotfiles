@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (use-package slime
   :ensure-system-package (sbcl)
   :hook (slime-mode . slime-maybe-autoconnect)

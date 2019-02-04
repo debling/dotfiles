@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (use-package sqlup-mode
   :delight)
 (add-hook 'sql-mode-hook 'sqlup-mode)

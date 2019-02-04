@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;; haskell-mode configuration
 ;; https://github.com/haskell/haskell-mode
 

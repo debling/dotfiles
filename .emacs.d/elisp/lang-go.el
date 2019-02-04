@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (use-package go-mode
   :hook (go-mode . go-company-fmt-hooh)
   :ensure-system-package ((go)

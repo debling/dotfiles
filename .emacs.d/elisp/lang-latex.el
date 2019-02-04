@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;; (use-package tex
 ;;   :ensure auctex
 ;;   :hook (LaTeX-mode . (latex-math-mode latex-company-backends))

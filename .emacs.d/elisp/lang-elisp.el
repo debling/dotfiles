@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (use-package ielm
   :functions elisp-company-backends
   :bind ("C-c e i" . ielm)

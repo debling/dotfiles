@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (use-package php-mode
   :mode
   ("\\.php\\'" . php-mode)

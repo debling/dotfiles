@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (use-package clojure-mode)
 
 (use-package clojure-mode-extra-font-locking)

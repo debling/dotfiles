@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (use-package company-shell
   :hook
   (sh-mode . shell-company-backends)

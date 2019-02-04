@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (let ((file-name-handler-alist nil))
 
   (package-initialize)

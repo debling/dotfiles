@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (use-package cc-mode
   :bind (:map c-mode-base-map
 	      ("C-x C-e" . compile))
