@@ -105,5 +105,15 @@
   :config
   (global-subword-mode))
 
+(setq compilation-finish-functions
+      (lambda (_ str)
+      	(when (not (string-match ".*exited abnormally.*" str))
+      	  (progn
+      	    (run-at-time "0.5 sec" nil
+      			 (lambda ()
+      			   (select-window (get-buffer-window (get-buffer-create "*compilation*")))
+      			   (quit-window)))
+      	    (message "No Compilation Errors!")))))
+
 (provide 'lang-general)
 ;;; lang-general.el ends here
