@@ -8,6 +8,12 @@
   (evil-mode)
   (setq evil-search-module 'evil-search))
 
+(use-package evil-collection
+  :after evil
+  :config
+  (setq evil-collection-company-use-tng nil)
+  (evil-collection-init))
+
 (use-package evil-org
   :after org
   :hook (org-mode . evil-org-mode)
