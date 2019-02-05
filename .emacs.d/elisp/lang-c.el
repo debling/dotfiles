@@ -10,12 +10,14 @@
   :hook ((c-mode c++-mode) . ccls/enable)
   :ensure-system-package (ccls . "yay --noconfirm -S ccls compiledb")
   :config
-  (setq ccls-initialization-options `(:cacheDirectory ,(expand-file-name "~/.cache/ccls")))
+  (setq ccls-initialization-options '(:cacheDirectory "/tmp/ccls"))
   (defun ccls/enable ()
     (require 'ccls)
     (lsp)
     (make-local-variable 'company-lsp-cache-candidates)
-    (setq company-lsp-cache-candidates nil)))
+    (make-local-variable 'lsp-enable-indentation)
+    (setq company-lsp-cache-candidates nil
+	  lsp-enable-indentation nil)))
 
 (add-hook 'c-mode-hook
 	  (lambda ()
