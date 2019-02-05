@@ -31,6 +31,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'tpope/vim-repeat'
 	Plug 'guns/vim-sexp'
 	Plug 'lifepillar/vim-solarized8'
+	Plug 'Valloric/YouCompleteMe'
 
 call plug#end()
 
