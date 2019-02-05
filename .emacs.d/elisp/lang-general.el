@@ -53,6 +53,7 @@
 	      ("C-p" . company-select-previous)
 	      ("M-n" . nil)
 	      ("M-p" . nil)
+	      ("TAB" . nil)
 	      ("SPC" . nil))
   :config
   (setq company-idle-delay 0.3
