@@ -3,6 +3,6 @@ Description=Newsboat synchronization service
 After=network.target network-online.target dbus.socket
 
 [Service]
-Environment="DISPLAY=:0"
+Environment="DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$UID/bus"
 Type=oneshot
 ExecStart=/usr/bin/newsboat -x reload
