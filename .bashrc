@@ -11,6 +11,9 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWCOLORHINTS=1
 export GIT_PS1_UNTRACKEDFILES=1
 export PROMPT_COMMAND='__git_ps1 "\$([[ \$? == 0 ]] || echo \"\[\033[01;31m\]\$? \")\[\033[34;1m\]\W\[\033[0m\]" " \\$\[\033[0m\] "'
+export HISTSIZE=1000000
+export HISTFILESIZE=1000000
+
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
