@@ -11,6 +11,3 @@ add Lock = Caps_Lock
 keycode 135 = Super_R
 
 keycode 254 = Escape
-
-keycode  35 =  braceleft bracketleft braceleft bracketleft ordfeminine dead_macron ordfeminine
-keycode  51 =  braceright bracketright braceright bracketright masculine masculine masculine
