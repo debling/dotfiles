@@ -12,7 +12,7 @@
   (setq inferior-lisp-program "/usr/bin/sbcl"
 	slime-contribs '(slime-fancy)
 	slime-auto-start 'ask
-	slime-lisp-implementations `((sbcl ("sbcl" "--core" ,(expand-file-name "~/.emacs.d/sbcl.core-for-slime")))))
+	slime-lisp-implementations '((sbcl ("sbcl"))))
 
   (defun slime-maybe-autoconnect ()
     (unless (slime-connected-p)
