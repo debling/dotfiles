@@ -46,23 +46,21 @@
   (use-package yasnippet-snippets))
 
 (use-package company
-  :commands global-company-mode
+  :hook (after-init . global-company-mode)
   :delight
   :bind (:map company-active-map
 	      ("C-n" . company-select-next)
 	      ("C-p" . company-select-previous)
 	      ("M-n" . nil)
 	      ("M-p" . nil)
-	      ("TAB" . nil)
 	      ("SPC" . nil))
   :config
   (setq company-idle-delay 0.3
 	company-minimum-prefix-length 0
-	company-echo-delay 0
 	company-require-match nil)
+  (company-tng-configure-default)
   (use-package company-statistics
-    :config (company-statistics-mode))
-  (global-company-mode 1))
+    :hook (company-mode . company-statistics-mode)))
 
 (use-package rainbow-delimiters
   :hook (prog-mode .  rainbow-delimiters-mode))
