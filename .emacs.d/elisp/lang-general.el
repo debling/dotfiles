@@ -76,7 +76,8 @@
   (nlinum-relative-setup-evil))
 
 (use-package olivetti
-  :hook (text-mode . olivetti-mode))
+  :hook (text-mode . olivetti-mode)
+  :config (setq-default olivetti-body-width 80))
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (add-hook 'prog-mode-hook 'electric-pair-mode)
