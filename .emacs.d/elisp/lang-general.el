@@ -29,8 +29,9 @@
 	      ("gd" . lsp-find-definition))
   :init
   (setq lsp-prefer-flymake nil))
-(use-package lsp-ui :commands lsp-ui-mode)
-(use-package company-lsp :commands company-lsp)
+(use-package lsp-ui
+  :commands lsp-ui-mode
+  :config (set-face-background 'lsp-ui-doc-background "#f4ebd7"))
 
 (use-package dap-mode
   :config
