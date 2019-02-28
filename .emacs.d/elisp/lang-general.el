@@ -109,11 +109,17 @@
       (lambda (_ str)
       	(when (not (string-match ".*exited abnormally.*" str))
       	  (progn
-      	    (run-at-time "0.5 sec" nil
+      	    (run-at-time "1.5 sec" nil
       			 (lambda ()
       			   (select-window (get-buffer-window (get-buffer-create "*compilation*")))
       			   (quit-window)))
       	    (message "No Compilation Errors!")))))
+
+(require 'ansi-color)
+(defun colorize-compilation ()
+  (when (eq major-mode 'compilation-mode)
+    (ansi-color-apply-on-region compilation-filter-start (point-max))))
+(add-hook 'compilation-filter-hook 'colorize-compilation)
 
 (provide 'lang-general)
 ;;; lang-general.el ends here
