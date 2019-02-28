@@ -28,4 +28,6 @@ xcape -e 'Control_L=Escape' &
 # dwm statusbar script
 "$HOME"/Scripts/dwmstart &
 
+compton &
+
 exec dwm
