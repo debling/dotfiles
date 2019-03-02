@@ -93,13 +93,13 @@
     :delight
     :config (global-page-break-lines-mode))
 
-  (use-package solarized-theme
+  (use-package doom-themes
     :config
-    (setq solarized-use-more-italic t
-	  solarized-high-contrast-mode-line t
-	  mode-line-end-spaces nil)
-    (load-theme 'solarized-light t)
-    (custom-set-faces '(persp-selected-face ((t (:foreground "violet")))))
+    (use-package doom-modeline
+      :hook (after-init . doom-modeline-mode))
+    (load-theme 'doom-solarized-light t)
+    (doom-themes-org-config)
+    (custom-set-faces '(persp-selected-face ((t (:foreground "foreground" :italic t :underline t)))))
     (add-to-list 'default-frame-alist '(font . "mono-10")))
 
   (use-package dashboard
