@@ -16,18 +16,14 @@
 	org-confirm-babel-evaluate	nil
 	org-log-reschedule		t
 	org-log-done			t
-        org-default-notes-file		(concat org-directory "Agenda/AFazeres.org")
-        org-agenda-files		(list "~/Org/Agenda")
+        org-default-notes-file		(concat org-directory "notes.org")
+        org-agenda-files		(list (concat org-directory "todo.org"))
         org-src-fontify-natively	t
 	org-hide-emphasis-markers	t
-	org-capture-templates		'(("t" "TODO" entry (file "~/Org/Agenda/AFazeres.org")
-					   "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
-					  ("n" "Anotação" entry (file "~/Org/Agenda/AFazeres.org")
-					   "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
-					  ("p" "Ligação telefónica" entry (file "~/git/org/refile.org")
-					   "* LIGAÇÂO para %? :Ligação:\n%U" :clock-in t :clock-resume t)
-					  ("E" "Evento" entry (file "~/Org/Agenda/Eventos.org")
-					   "* %? :EVENTO:\n%U" :clock-in t :clock-resume t)))
+	org-capture-templates		'(("t" "TODO" entry (file "~/Org/todo.org")
+					   "* TODO %?\n%U" :empty-lines 1)
+					  ("n" "Note" entry (file "~/Org/notes.org")
+					   "* %? :NOTE:\n%U\n%a\n" :empty-lines 1)))
   (when (window-system)
     (let* ((variable-tuple (cond ((x-list-fonts "Source Sans Pro") '(:font "Source Sans pro"))
 				 ((x-family-fonts "Sans Serif")    '(:family "Sans Serif"))
