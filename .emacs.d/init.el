@@ -25,6 +25,7 @@
 	scroll-conservatively 100
 	dired-dwim-target t
 	system-packages-noconfirm t
+	show-trailing-whitespace t
 	user-mail-address "d.ebling8@gmail.com"
 	user-full-name "Denílson dos Santos Ebling")
 
