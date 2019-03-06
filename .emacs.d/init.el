@@ -102,16 +102,6 @@
     (custom-set-faces '(persp-selected-face ((t (:foreground "foreground" :italic t :underline t)))))
     (add-to-list 'default-frame-alist '(font . "mono-10")))
 
-  (use-package dashboard
-    :config
-    (dashboard-setup-startup-hook)
-    (setq dashboard-items '((projects . 5)
-			    (recents  . 5)
-			    (agenda . 7))
-	  initial-buffer-choice (lambda ()
-				  (get-buffer "*dashboard*"))
-	  show-week-agenda-p t))
-
   (global-set-key (kbd "C-x e") 'eshell)
 
   (require 'editing)
