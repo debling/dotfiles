@@ -14,6 +14,8 @@
   (setq org-directory			"~/Org/"
 	org-plantuml-jar-path		(replace-regexp-in-string "\n$" ""
 								  (shell-command-to-string "cat $(which plantuml) | cut -d \"'\" -f2 | sed 1d"))
+	plantuml-jar-path               org-plantuml-jar-path
+	flycheck-plantuml-executable    org-plantuml-jar-path
 	org-confirm-babel-evaluate	nil
 	org-log-reschedule		t
 	org-log-done			t
