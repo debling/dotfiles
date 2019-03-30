@@ -21,7 +21,7 @@ xss-lock sflock &
 
 # Set keyboard layout and key repeat rate
 setxkbmap -layout br -model thinkpad
-xmodmap "$HOME/.Xmodmap"
+xkbcomp ~/.Xkeymap $DISPLAY
 xset r rate 160 60 &
 xcape -e 'Control_L=Escape' &
 
