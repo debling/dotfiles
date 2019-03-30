@@ -47,7 +47,7 @@
 
   (menu-bar-mode 0)
   (tool-bar-mode 0)
-  (scroll-bar-mode 0)
+
   (column-number-mode 1)
 
   (defalias 'yes-or-no-p 'y-or-n-p)
