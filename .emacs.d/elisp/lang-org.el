@@ -2,17 +2,18 @@
 
 (use-package org
   :hook (org-mode . org-indent-mode)
-  :bind
-  ("C-c l" . org-store-link)
-  ("C-c a" . org-agenda)
-  ("C-c c" . org-capture)
+  :bind (("C-c l" . org-store-link)
+	 ("C-c a" . org-agenda)
+	 ("C-c c" . org-capture))
   :config
   (define-key evil-normal-state-map (kbd "<remap> <evil-next-line>")		'evil-next-visual-line)
   (define-key evil-normal-state-map (kbd "<remap> <evil-previous-line>")	'evil-previous-visual-line)
   (define-key evil-motion-state-map (kbd "<remap> <evil-next-line>")		'evil-next-visual-line)
   (define-key evil-motion-state-map (kbd "<remap> <evil-previous-line>")	'evil-previous-visual-line)
+  (evil-define-key 'normal org-mode-map (kbd "<tab>") #'org-cycle)
   (setq org-directory			"~/Org/"
-	org-plantuml-jar-path		"~/.emacs.d/plantuml.jar"
+	org-plantuml-jar-path		(replace-regexp-in-string "\n$" ""
+								  (shell-command-to-string "cat $(which plantuml) | cut -d \"'\" -f2 | sed 1d"))
 	org-confirm-babel-evaluate	nil
 	org-log-reschedule		t
 	org-log-done			t
