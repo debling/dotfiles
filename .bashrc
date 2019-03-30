@@ -5,6 +5,8 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+source /etc/bashrc
+
 #PS1="\[\033[ 01;37m\]\$([[ \$? == 0 ]] || echo \"\[\033[01;31m\]\$?\")\W \$ "
 
 export GIT_PS1_SHOWDIRTYSTATE=1
