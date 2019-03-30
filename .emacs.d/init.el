@@ -119,6 +119,7 @@
   (require 'lang-markdown)
   (require 'lang-org)
   (require 'lang-php)
+  (require 'lang-python)
   (require 'lang-scheme)
   (require 'lang-shell)
   (require 'lang-sql)

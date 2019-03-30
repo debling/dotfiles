@@ -31,9 +31,12 @@ call plug#begin('~/.vim/plugged')
 	Plug 'tpope/vim-repeat'
 	Plug 'guns/vim-sexp'
 	Plug 'lifepillar/vim-solarized8'
-	Plug 'Valloric/YouCompleteMe'
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+	Plug 'deoplete-plugins/deoplete-jedi'
 
 call plug#end()
+
+let g:deoplete#enable_at_startup = 1
 
 let mapleader=" "
 
