@@ -117,6 +117,7 @@
   (require 'lang-java)
   (require 'lang-latex)
   (require 'lang-markdown)
+  (require 'lang-nix)
   (require 'lang-org)
   (require 'lang-php)
   (require 'lang-python)
@@ -194,7 +195,7 @@
  '(org-agenda-files (quote ("/home/dse/Org/Agenda/AFazeres.org")))
  '(package-selected-packages
    (quote
-    (evil-collection zoom magit counsel-projectile impatient-mode company-web emmet-mode tide typescript-mode sql-indent sqlup-mode company-shell geiser openwith htmlize org-bullets edit-indirect company-auctex lsp-java hindent intero haskell-mode olivetti nlinum-relative rainbow-delimiters company-statistics yasnippet-snippets dap-mode company-lsp lsp-ui eros common-lisp-snippets flycheck-clojure cider clojure-snippets clojure-mode-extra-font-locking clojure-mode ccls xclip auto-sudoedit evil-mc avy evil-smartparens evil-org evil counsel-gtags counsel ivy-xref dashboard solarized-theme page-break-lines try undo-tree which-key auto-compile web-mode-edit-element company-php plantuml-mode company-go slime-company sendmode use-package-ensure-system-package org-projectile persp-projectile use-package async delight dap-java edit-inditect doom-thems flucheck-clojure clojure-mode-extra-font-lock litable color-theme-solarized auctex-latexmk php-auto-yasnippets company-reftex company-bibtex auctecx ac-html-bootstrap ac-html-angular common-lispcommon-lisp-snippets whitch-key nasm-mode dracula base16-themes graphviz-dot-mode org-pdfview org-ref flyspell-popup helm-themes phpunit ac-php ggtags disaster company-elisp sudo-edit org-plus-contrib helm-gtags dracula-theme diminish company-c-headers)))
+    (nix-update nix-sandbox nix-sanbox nix-buffer nix-bufer company-nixos-options company-nix-options editorconfig helm-nixos-options nix-mode evil-collection zoom magit counsel-projectile impatient-mode company-web emmet-mode tide typescript-mode sql-indent sqlup-mode company-shell geiser openwith htmlize org-bullets edit-indirect company-auctex lsp-java hindent intero haskell-mode olivetti nlinum-relative rainbow-delimiters company-statistics yasnippet-snippets dap-mode company-lsp lsp-ui eros common-lisp-snippets flycheck-clojure cider clojure-snippets clojure-mode-extra-font-locking clojure-mode ccls xclip auto-sudoedit evil-mc avy evil-smartparens evil-org evil counsel-gtags counsel ivy-xref dashboard solarized-theme page-break-lines try undo-tree which-key auto-compile web-mode-edit-element company-php plantuml-mode company-go slime-company sendmode use-package-ensure-system-package org-projectile persp-projectile use-package async delight dap-java edit-inditect doom-thems flucheck-clojure clojure-mode-extra-font-lock litable color-theme-solarized auctex-latexmk php-auto-yasnippets company-reftex company-bibtex auctecx ac-html-bootstrap ac-html-angular common-lispcommon-lisp-snippets whitch-key nasm-mode dracula base16-themes graphviz-dot-mode org-pdfview org-ref flyspell-popup helm-themes phpunit ac-php ggtags disaster company-elisp sudo-edit org-plus-contrib helm-gtags dracula-theme diminish company-c-headers)))
  '(vc-annotate-background nil)
  '(vc-annotate-background-mode nil)
  '(vc-annotate-color-map
@@ -235,7 +236,7 @@
  '(org-level-6 ((t (:inherit default :weight bold :font "Source Sans pro"))))
  '(org-level-7 ((t (:inherit default :weight bold :font "Source Sans pro"))))
  '(org-level-8 ((t (:inherit default :weight bold :font "Source Sans pro"))))
- '(persp-selected-face ((t (:foreground "violet"))))
+ '(persp-selected-face ((t (:foreground "foreground" :italic t :underline t))))
  '(variable-pitch ((t (:family "Source Sans Pro" :height 110 :weight normal)))))
 
 (setq gc-cons-threshold 50000000)
