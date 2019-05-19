@@ -5,6 +5,7 @@
   (setq evil-want-integration t
 	evil-want-keybinding nil)
   :config
+  (evil-global-set-key 'normal (kbd "çh") 'help)
   (evil-mode)
   (setq evil-search-module 'evil-search))
 
@@ -28,6 +29,16 @@
   (require 'smartparens-config)
   (smartparens-global-mode t)
   (show-smartparens-global-mode t)
+  (evil-define-minor-mode-key 'normal 'smartparens-mode (kbd "çs") 'sp-forward-slurp-sexp)
+  (evil-define-minor-mode-key 'normal 'smartparens-mode (kbd "çb") 'sp-forward-barf-sexp)
+  (evil-define-minor-mode-key 'normal 'smartparens-mode (kbd "çS") 'sp-backward-slurp-sexp)
+  (evil-define-minor-mode-key 'normal 'smartparens-mode (kbd "çB") 'sp-backward-barf-sexp)
+  (evil-define-minor-mode-key 'normal 'smartparens-mode (kbd "çr") 'sp-raise-sexp)
+  (evil-define-minor-mode-key 'normal 'smartparens-mode (kbd "ç+") 'sp-join-sexp)
+  (evil-define-minor-mode-key 'normal 'smartparens-mode (kbd "ç-") 'sp-split-sexp)
+  (evil-define-minor-mode-key 'normal 'smartparens-mode (kbd "çwr") 'sp-wrap-round)
+  (evil-define-minor-mode-key 'normal 'smartparens-mode (kbd "çwc") 'sp-wrap-curly)
+  (evil-define-minor-mode-key 'normal 'smartparens-mode (kbd "çws") 'sp-wrap-square)
   (use-package evil-smartparens
     :delight
     :hook (smartparens-mode . evil-smartparens-mode)))
@@ -61,7 +72,6 @@
   :config (auto-sudoedit-mode 1))
 
 (use-package xclip
-  :ensure-system-package xclip
   :config (xclip-mode 1))
 
 (global-hl-line-mode t)
