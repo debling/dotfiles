@@ -11,7 +11,6 @@
   :delight
   :hook ((prog-mode . flyspell-prog-mode)
 	 (text-mode . flyspell-mode))
-  :ensure-system-package ((aspell . aspell-pt) (aspell . aspell-en)(aspell))
   :bind ("<f8>" . switch-dictionary)
   :config
   (setq ispell-program-name "aspell"

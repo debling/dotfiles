@@ -57,8 +57,6 @@
   (set-register ?p '(file . "~/.config/polybar/config"))
   (set-register ?q '(file . "~/.config/qutebrowser/config.py"))
 
-  (use-package use-package-ensure-system-package)
-
   (use-package delight
     :config
     (delight 'abbrev-mode nil 'abbrev))

@@ -19,7 +19,6 @@
     (push (org-projectile-project-todo-entry) org-capture-templates)))
 
 (use-package counsel-projectile
-  :ensure-system-package (ag . the_silver_searcher)
   :bind
   ("C-x v" . counsel-projectile)
   ("C-x c p" . counsel-projectile-ag)

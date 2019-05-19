@@ -2,8 +2,6 @@
 
 (use-package go-mode
   :hook (go-mode . go-company-fmt-hooh)
-  :ensure-system-package ((go)
-			  (goimports . go-tools))
   :config
   (use-package company-go)
   (defun go-company-fmt-hooh ()

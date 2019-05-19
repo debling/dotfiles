@@ -8,7 +8,6 @@
 	sp-escape-quotes-after-insert nil))
 (use-package ccls
   :hook ((c-mode c++-mode) . ccls/enable)
-  :ensure-system-package (ccls . "yay --noconfirm -S ccls compiledb")
   :config
   (setq ccls-initialization-options '(:cacheDirectory "/tmp/ccls"))
   (defun ccls/enable ()

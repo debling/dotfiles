@@ -5,7 +5,6 @@
 
 (use-package haskell-mode
   ;; haskell-mode swaps `C-m' and `C-j' behavior. Revert it back
-  :ensure-system-package ghc
   :hook (haskell-mode . haskell-indentation-mode)
   :bind (:map haskell-mode-map
               ("C-m" . newline)
@@ -14,7 +13,6 @@
 ;; intero-mode for a complete IDE solution to haskell
 ;; commercialhaskell.github.io/intero
 (use-package intero
-  :ensure-system-package stack
   :hook ((haskell-mode . intero-mode)
 	 (intero-mode . intero-company-backend)
 	 (intero-repl-mode . intero-company-backend))
@@ -25,7 +23,6 @@
 ;; hindent - format haskell code automatically
 ;; https://github.com/chrisdone/hindent
 (use-package hindent
-  :ensure-system-package hindent
   :hook (haskell-mode . hindent-mode)
   :delight
   :config

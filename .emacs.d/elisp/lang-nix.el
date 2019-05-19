@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (use-package nix-mode
   :commands nix-eshell nix-unpack nix-repl
   :bind (:map nix-mode-map
