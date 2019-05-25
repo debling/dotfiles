@@ -31,9 +31,9 @@ call plug#begin('~/.vim/plugged')
 	Plug 'tpope/vim-repeat'
 	Plug 'guns/vim-sexp'
 	Plug 'lifepillar/vim-solarized8'
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 	Plug 'deoplete-plugins/deoplete-jedi'
-
+	Plug 'lifepillar/vim-solarized8'
 call plug#end()
 
 let g:deoplete#enable_at_startup = 1
@@ -53,7 +53,8 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 syntax enable
 set background=light
 let g:solarized_term_italics=1
-colorscheme solarized8
+let g:solarized_statusline="flat"
+colorscheme solarized8_high
 
 filetype plugin indent on
 
