@@ -15,7 +15,7 @@
   :config
   (setq ispell-program-name "aspell"
 	ispell-extra-args '("--sug-mode=ultra" "--run-together")
-	ispell-dictionary "en_US")
+	ispell-dictionary "pt_BR")
   (defun switch-dictionary()
     (interactive)
     (let* ((dic ispell-current-dictionary)
@@ -123,6 +123,12 @@
   (when (eq major-mode 'compilation-mode)
     (ansi-color-apply-on-region compilation-filter-start (point-max))))
 (add-hook 'compilation-filter-hook 'colorize-compilation)
+
+(use-package executable
+  :ensure nil
+  :hook
+  ((after-save .
+    executable-make-buffer-file-executable-if-script-p)))
 
 (provide 'lang-general)
 ;;; lang-general.el ends here
