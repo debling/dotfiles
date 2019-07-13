@@ -29,6 +29,7 @@
   :bind ("C-x g" . magit-status)
   :config
   (setq magit-completing-read-function 'ivy-completing-read))
+(use-package magit-todos)
 
 (use-package ediff
   :config
