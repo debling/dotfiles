@@ -20,6 +20,6 @@ alias p="sudo pacman"
 alias pr="sudo pacman -Rsn"
 alias prorphan='sudo pacman -Rns $(pacman -Qtdq)'
 alias ss="systemctl --user"
-alias sv="sudo nvim"
+alias sv="sudoedit"
 alias v="nvim"
 alias ytd='youtube-dl -o "%(title)s.%(ext)s"'
