@@ -12,14 +12,15 @@
   (define-key evil-motion-state-map (kbd "<remap> <evil-previous-line>")	'evil-previous-visual-line)
   (evil-define-key 'normal org-mode-map (kbd "<tab>") #'org-cycle)
   (setq org-directory			"~/Org/"
-        org-plantuml-jar-path           plantuml-jar-path
-        flycheck-plantuml-executable    plantuml-jar-path
+        org-plantuml-jar-path           "~/.local/jar/plantuml.jar"
+        flycheck-plantuml-executable    org-plantuml-jar-path
 	org-confirm-babel-evaluate	nil
 	org-log-reschedule		t
 	org-log-done			t
         org-default-notes-file		(concat org-directory "notes.org")
         org-agenda-files		(list (concat org-directory "todo.org"))
         org-src-fontify-natively	t
+	org-pretty-entities             t
 	org-hide-emphasis-markers	t
 	org-capture-templates		'(("t" "TODO" entry (file "~/Org/todo.org")
 					   "* TODO %?\n%U" :empty-lines 1)
