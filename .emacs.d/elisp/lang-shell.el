@@ -8,5 +8,13 @@
     (interactive)
     (add-to-list (make-local-variable 'company-backends) '(company-shell
 							   company-shell-env))))
+(use-package load-bash-alias
+  :ensure t
+  :config
+  (setq load-bash-alias-bashrc-file "~/.bashrc"))
+
+(use-package counsel-tramp
+  :config (setq tramp-default-method "ssh"))
+
 (provide 'lang-shell)
 ;;; lang-shell.el ends here
