@@ -19,7 +19,7 @@
 	web-mode-css-indent-offset 2
 	web-mode-code-indent-offset 2
 	web-mode-auto-close-style 1
-	web-mode-auto-quote-style 2
+	web-mode-auto-quote-style 1
 	web-mode-enable-auto-quoting t
 	web-mode-enable-auto-pairing t
 	web-mode-enable-current-element-highlight t)
