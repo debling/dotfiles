@@ -28,7 +28,8 @@
 	show-trailing-whitespace t
 	user-mail-address "d.ebling8@gmail.com"
 	user-full-name "Denílson dos Santos Ebling"
-	indent-tabs-mode nil)
+	indent-tabs-mode nil
+	custom-file "~/.emacs.d/custom.el")
 
   (unless (package-installed-p 'use-package)
     (package-refresh-contents)
@@ -134,6 +135,5 @@
 
   (require 'mail-config)
 
-  (load "~/.emacs.d/custom.el" 'noerror)
-  )
+  (load "~/.emacs.d/custom.el" 'noerror))
 (setq gc-cons-threshold 50000000)
