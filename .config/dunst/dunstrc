@@ -31,7 +31,7 @@
     # the top and down respectively.
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "375x8-0+20"
+    geometry = "400x10-5+20"
 
     # Show how many messages are currently hidden (because of geometry).
     indicate_hidden = yes
@@ -164,11 +164,11 @@
     icon_position = left
 
     # Scale larger icons down to this size, set to 0 to disable
-    max_icon_size = 50
+    max_icon_size = 70
 
     # Paths to default icons.
     #icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
-    icon_path = /usr/share/icons/Adwaita/16x16/status/:/usr/share/icons/Adwaita/16x16/devices/
+    icon_path = /run/current-system/sw/share/icons/Adwaita/16x16/status/:/usr/share/icons/Adwaita/16x16/devices/
 
     ### History ###
 
@@ -182,10 +182,10 @@
     ### Misc/Advanced ###
 
     # dmenu path.
-    dmenu = /usr/bin/dmenu -p dunst:
+    dmenu = /usr/bin/env dmenu -p dunst:
 
     # Browser for opening urls in context menu.
-    browser = /usr/bin/qutebrowser
+    browser = /usr/bin/env firefox
 
     # Always run rule-defined scripts, even if the notification is suppressed
     always_run_script = true
@@ -242,7 +242,7 @@
     # On the US keyboard layout "grave" is normally above TAB and left
     # of "1". Make sure this key actually exists on your keyboard layout,
     # e.g. check output of 'xmodmap -pke'
-    history = ctrl+grave
+    history = ctrl+period
 
     # Context menu.
     context = ctrl+shift+period
@@ -252,14 +252,14 @@
     # Otherwise the "#" and following would be interpreted as a comment.
     background = "#fdf6e3"
     foreground = "#586e75"
-    timeout = 5
+    timeout = 6
     # Icon for notifications with low urgency, uncomment to enable
     #icon = /path/to/icon
 
 [urgency_normal]
     background = "#fdf6e3"
     foreground = "#586e75"
-    timeout = 8
+    timeout = 10
     # Icon for notifications with normal urgency, uncomment to enable
     #icon = /path/to/icon
 
@@ -267,7 +267,7 @@
     background = "#dc322f"
     foreground = "#073642"
     frame_color = "#285577"
-    timeout = 12
+    timeout = 0
     # Icon for notifications with critical urgency, uncomment to enable
     #icon = /path/to/icon
 
