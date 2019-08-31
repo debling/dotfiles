@@ -1,1 +1,4 @@
 *.elc
+/.gnupg/
+!/.gnupg/gpg-agent.conf
+/.config/mpv/watch_later/8F287B8E8B8994878FFD789F4AA37D6F
