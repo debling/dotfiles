@@ -15,12 +15,6 @@ export GIT_PS1_UNTRACKEDFILES=1
 export HISTSIZE=1000000
 export HISTFILESIZE=1000000
 
-# Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/"
-[ -n "$PS1" ] && \
-    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-    eval "$("$BASE16_SHELL/profile_helper.sh")"
-
 eval "$(fasd --init auto)"
 
 jj()

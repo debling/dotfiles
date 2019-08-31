@@ -21,6 +21,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 call plug#begin('~/.vim/plugged')
 
+	Plug 'chriskempson/vim-tomorrow-theme'
 	Plug 'terryma/vim-multiple-cursors'
 	Plug 'tpope/vim-surround'
 	Plug 'SirVer/ultisnips'
@@ -51,10 +52,7 @@ set termguicolors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 syntax enable
-set background=light
-let g:solarized_term_italics=1
-let g:solarized_statusline="flat"
-colorscheme solarized8_high
+colorscheme Tomorrow
 
 filetype plugin indent on
 

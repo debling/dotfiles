@@ -98,13 +98,13 @@
     :delight
     :config (global-page-break-lines-mode))
 
-  (use-package doom-themes
+  (use-package color-theme-sanityinc-tomorrow
     :config
-    (use-package doom-modeline
-      :hook (after-init . doom-modeline-mode))
-    (load-theme 'doom-solarized-light t)
-    (doom-themes-org-config)
-    (add-to-list 'default-frame-alist '(font . "mono-10")))
+    (setf (nth 5 (nth 1 color-theme-sanityinc-tomorrow-colors))
+	  '(foreground . "#000000"))
+    (load-theme 'sanityinc-tomorrow-day t)
+    (scroll-bar-mode -1)
+    (add-to-list 'default-frame-alist '(font . "Source Code pro-16")))
 
   (global-set-key (kbd "C-x e") 'eshell)
 

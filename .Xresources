@@ -21,25 +21,26 @@ URxvt.resize-font.bigger:C-Up
 URxvt.url-launcher:/usr/bin/xdg-open
 URxvt.matcher.button:1
 
-! Base16 Solarized Light
-! Scheme: Ethan Schoonover (http://ethanschoonover.com/solarized)
+! Base16 Tomorrow
+! Scheme: Chris Kempson (http://chriskempson.com)
 
-#define base00 #fdf6e3
-#define base01 #eee8d5
-#define base02 #93a1a1
-#define base03 #839496
-#define base04 #657b83
-#define base05 #586e75
-#define base06 #073642
-#define base07 #002b36
-#define base08 #dc322f
-#define base09 #cb4b16
-#define base0A #b58900
-#define base0B #859900
-#define base0C #2aa198
-#define base0D #268bd2
-#define base0E #6c71c4
-#define base0F #d33682
+#define base00 #ffffff
+#define base01 #e0e0e0
+#define base02 #d6d6d6
+#define base03 #8e908c
+#define base04 #969896
+! #define base05 #4d4d4c
+#define base05 #000000
+#define base06 #282a2e
+#define base07 #1d1f21
+#define base08 #c82829
+#define base09 #f5871f
+#define base0A #eab700
+#define base0B #718c00
+#define base0C #3e999f
+#define base0D #4271ae
+#define base0E #8959a8
+#define base0F #a3685a
 
 *foreground:   base05
 #ifdef background_opacity
@@ -74,4 +75,4 @@ URxvt.matcher.button:1
 *color18:      base01
 *color19:      base02
 *color20:      base04
-*color21: base06
+*color21:      base06
