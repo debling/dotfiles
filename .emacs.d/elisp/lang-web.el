@@ -55,7 +55,13 @@
   :config (setq js2-strict-trailing-comma-warning nil))
 
 (use-package typescript-mode
-  :hook (typescript . lsp))
+  :hook ((typescript-mode . tide-setup)
+	 (typescript-mode . tide-hl-identifier-mode))
+  :config
+  (use-package ts-comint
+    :config
+    (setq ts-comint-program-command "/home/dse/.npm/bin/tsun"))
+  (use-package tide))
 
 (use-package restclient
   :hook (restclient . company-rest-setup)
