@@ -20,12 +20,14 @@
 
 (use-package evil-collection
   :after evil
+  :defines evil-collection-company-use-tng
   :config
   (setq evil-collection-company-use-tng nil)
   (evil-collection-init))
 
 (use-package evil-org
   :after org
+  :functions evil-org-agenda-set-keys
   :hook (org-mode . evil-org-mode)
   (evil-org-mode-hook . evil-org-set-key-theme)
   :config
@@ -34,6 +36,7 @@
 
 (use-package smartparens
   :delight
+  :functions evil-define-minor-mode-key
   :config
   (require 'smartparens-config)
   (smartparens-global-mode t)
@@ -63,6 +66,7 @@
   :config (global-evil-mc-mode 1))
 
 (defun split-and-follow-horizontally ()
+  "Split horizontally and switch to that window."
   (interactive)
   (split-window-below)
   (balance-windows)
@@ -70,6 +74,7 @@
 (global-set-key (kbd "C-x 2") 'split-and-follow-horizontally)
 
 (defun split-and-follow-vertically ()
+  "Split vertically and switch to that window."
   (interactive)
   (split-window-right)
   (balance-windows)
