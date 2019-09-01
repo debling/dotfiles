@@ -115,6 +115,7 @@
   (require 'lang-clojure)
   (require 'lang-commonlisp)
   (require 'lang-elisp)
+  (require 'lang-erlang)
   (require 'lang-general)
   (require 'lang-go)
   (require 'lang-haskell)
