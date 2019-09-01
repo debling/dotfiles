@@ -7,7 +7,7 @@
 
 source /etc/bashrc
 
-PS1='$([[ $? == 0 ]] || echo "\[\033[01;31m\]$? ")$([[ -n "$IN_NIX_SHELL" ]] && echo "[nix-shell] ")\[\033[34;1m\]\W\[\033[0m\] \e[1;35m$(__git_ps1 "[%s] ")\[\033[0m\]\$ '
+PS1='$([[ $? == 0 ]] || echo "\[\033[01;31m\]$? ")$([[ -n "$IN_NIX_SHELL" ]] && echo "[nix-shell] ")\[\033[34;1m\]\W\[\033[0m\] $(__git_ps1 "[%s] ")\[\033[0m\]\$ '
 
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWCOLORHINTS=1
