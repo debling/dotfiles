@@ -39,7 +39,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'lifepillar/vim-solarized8'
   	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 	Plug 'deoplete-plugins/deoplete-jedi'
-	Plug 'lifepillar/vim-solarized8'
+
 call plug#end()
 
 let g:deoplete#enable_at_startup = 1
