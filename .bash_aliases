@@ -23,3 +23,5 @@ alias ss="systemctl --user"
 alias sv="sudoedit"
 alias v="nvim"
 alias ytd='youtube-dl -o "%(title)s.%(ext)s"'
+alias rmWall="kill -s USR1 \$(cat /tmp/randomWallpaper.pid)"
+alias skipWall="kill -s USR2 \$(cat /tmp/randomWallpaper.pid)"
