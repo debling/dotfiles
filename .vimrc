@@ -31,14 +31,17 @@ call plug#begin('~/.vim/plugged')
 	Plug 'tpope/vim-surround'
 	Plug 'SirVer/ultisnips'
 	Plug 'honza/vim-snippets'
-	Plug 'vim-syntastic/syntastic'
 	Plug 'jiangmiao/auto-pairs'
 	Plug 'justinmk/vim-sneak'
 	Plug 'tpope/vim-repeat'
 	Plug 'guns/vim-sexp'
-	Plug 'lifepillar/vim-solarized8'
-  	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 	Plug 'deoplete-plugins/deoplete-jedi'
+	Plug 'dense-analysis/ale'
+	Plug 'LnL7/vim-nix'
+	Plug 'tpope/vim-commentary'
+	Plug 'junegunn/fzf.vim'
+	Plug 'editorconfig/editorconfig-vim'
 
 call plug#end()
 
