@@ -57,7 +57,8 @@
 	      ("C-p" . company-select-previous)
 	      ("M-n" . nil)
 	      ("M-p" . nil)
-	      ("SPC" . nil))
+	      ("SPC" . nil)
+	      ("RET" . company-complete-selection))
   :config
   (setq company-idle-delay 0.3
 	company-minimum-prefix-length 0
