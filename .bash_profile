@@ -7,7 +7,7 @@
 source /etc/profile
 
 export GOPATH="$HOME/go"
-export PATH="$HOME/.roswell/bin:$HOME/Scripts:$PATH:$GOPATH/bin:$HOME/.cargo/bin:$HOME/.npm/bin"
+export PATH="$PATH:$HOME/.roswell/bin:$HOME/Scripts:$GOPATH/bin:$HOME/.cargo/bin:$HOME/.npm/bin"
 
 export EDITOR="emacsclient -t"
 export ALTERNATE_EDITOR="nvim"
