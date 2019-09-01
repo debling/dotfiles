@@ -1,0 +1,5 @@
+super + e
+	emacsclient -c
+
+super + c
+	emacsclient -ne '(dse/org-capture-popup)'
