@@ -24,5 +24,8 @@
 (use-package py-isort
   :hook (before-save-hook . py-isort-before-save))
 
+(use-package importmagic
+  :hook (python-mode . importmagic-mode))
+
 (provide 'lang-python)
 ;;; lang-python.el ends here
