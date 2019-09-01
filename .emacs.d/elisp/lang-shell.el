@@ -16,5 +16,10 @@
 (use-package counsel-tramp
   :config (setq tramp-default-method "ssh"))
 
+(use-package esh-autosuggest
+  :hook (eshell-mode . esh-autosuggest-mode))
+
+(use-package docker)
+
 (provide 'lang-shell)
 ;;; lang-shell.el ends here
