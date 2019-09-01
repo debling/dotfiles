@@ -63,5 +63,26 @@
   (openwith-mode t)
   (setq openwith-associations '(("\\.pdf\\'" "zathura" (file)))))
 
+(use-package noflet)
+(defadvice org-capture-finalize
+    (after delete-capture-frame activate)
+  "Advise capture-finalize to close the frame."
+  (if (equal "org-capture-popup" (frame-parameter nil 'name))
+      (delete-frame)))
+
+(defadvice org-capture-destroy
+    (after delete-capture-frame activate)
+  "Advise capture-destroy to close the frame."
+  (if (equal "org-capture-popup" (frame-parameter nil 'name))
+      (delete-frame)))
+
+(defun dse/org-capture-popup ()
+  "Make a new frame and run `org-capture' with no splits."
+  (interactive)
+  (select-frame-set-input-focus (make-frame '((name . "org-capture-popup"))))
+  (delete-other-windows)
+  (noflet ((switch-to-buffer-other-window (buf) (switch-to-buffer buf)))
+    (org-capture)))
 
 (provide 'lang-org)
+;;; lang-org.el ends here
