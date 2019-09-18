@@ -4,9 +4,8 @@
   :init
   (advice-add 'python-mode :before 'elpy-enable)
   :config
-  (setq python-shell-interpreter "ipython"
-	python-shell-interpreter-args "-i --simple-prompt"
-	elpy-rpc-backend "jedi"))
+  (setq python-shell-interpreter "python"
+	python-shell-interpreter-args "-i"))
 
 (when (require 'flycheck nil t)
   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
