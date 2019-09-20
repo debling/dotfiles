@@ -73,6 +73,9 @@ bind index,pager \Cp sidebar-prev-new
 bind index,pager \Cn sidebar-next-new
 bind index,pager B sidebar-toggle-visible
 
+set sort = threads
+set sort_aux = reverse-last-date-received
+
 source ~/.mutt/vim-keys.rc
 source ~/.mutt/gpg.rc
-source ~/.mutt/base16.muttrc
+source ~/.mutt/colors.muttrc
