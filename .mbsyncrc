@@ -4,7 +4,7 @@ Host imap.gmail.com
 User d.ebling8@gmail.com
 AuthMechs Login
 # To store the password in an encrypted file use PassCmd instead of Pass
-PassCmd "pass gmail/isync"
+PassCmd "cat ~/.local/isync"
 #
 # Use SSL
 SSLType IMAPS
