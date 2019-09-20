@@ -54,15 +54,14 @@
 
   (menu-bar-mode 0)
   (tool-bar-mode 0)
+  (save-place-mode 't)
 
   (column-number-mode 1)
 
   (defalias 'yes-or-no-p 'y-or-n-p)
 
   (set-register ?e '(file . "~/.emacs.d/init.el"))
-  (set-register ?i '(file . "~/.config/i3/config"))
-  (set-register ?p '(file . "~/.config/polybar/config"))
-  (set-register ?q '(file . "~/.config/qutebrowser/config.py"))
+  (set-register ?n '(file . "/etc/nixos/configuration.nix"))
 
   (use-package delight
     :config
