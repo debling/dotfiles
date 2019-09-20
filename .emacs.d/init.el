@@ -98,13 +98,12 @@
     :delight
     :config (global-page-break-lines-mode))
 
-  (use-package color-theme-sanityinc-tomorrow
+  (use-package leuven-theme
     :config
-    (setf (nth 5 (nth 1 color-theme-sanityinc-tomorrow-colors))
-	  '(foreground . "#000000"))
-    (load-theme 'sanityinc-tomorrow-day t)
+    (load-theme 'leuven t)
     (scroll-bar-mode -1)
-    (add-to-list 'default-frame-alist '(font . "Source Code pro-16")))
+    (add-to-list 'default-frame-alist '(font . "Source Code pro-16"))
+    (toggle-indicate-empty-lines))
 
   (global-set-key (kbd "C-x e") 'eshell)
 
