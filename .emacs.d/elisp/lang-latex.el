@@ -8,18 +8,15 @@
 	 (TeX-mode . latex-math-mode)
 	 (TeX-mode . tex-company-setup)
 	 (TeX-mode . auctex-latexmk-setup)
-	 (TeX-mode . (lambda ()
-		       (setq TeX-command-default "LatexMk"))))
   :config
   (setq TeX-auto-save		t
 	TeX-parse-self		t
 	TeX-save-query		nil
 	TeX-PDF-mode		t
-	TeX-command-default	"LatexMk"
-	;TeX-view-program-list	'(("Evince" "zathura -P %(outpage) %o"))
+	TeX-command-default	"latexmk"
+	TeX-view-program-list	'(("Evince" "zathura -P %(outpage) %o"))
 	LaTeX-default-author	user-full-name)
-(add-to-list 'TeX-view-program-selection
-             '(output-pdf "Zathura"))
+  (add-to-list 'TeX-view-program-selection '(output-pdf "Zathura"))
   (use-package auctex-latexmk
     :commands (auctex-latexmk-setup)
     :config
@@ -42,8 +39,7 @@
 
   (defun tex-company-setup ()
     "docstring"
-    (add-to-list (make-local-variable 'company-backends) '(company-math company-reftex company-bibtex))
-    (company-auctex-init)))
+    (add-to-list (make-local-variable 'company-backends) '(company-math company-reftex company-bibtex))))
 
 (provide 'lang-latex)
 ;;; lang-latex.el ends here
