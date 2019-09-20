@@ -3,12 +3,14 @@
 (use-package evil
   :init
   (setq evil-want-integration t
-	evil-want-keybinding nil)
+	evil-want-keybinding nil
+	evil-want-C-u-scroll t)
   :config
   (evil-global-set-key 'normal (kbd "çh") 'help)
   (evil-mode)
   (use-package evil-terminal-cursor-changer
     :config
+    (evil-define-key 'normal org-mode-map (kbd "<tab>") #'org-cycle)
     (setq evil-motion-state-cursor  'hbar
 	  evil-visual-state-cursor  'box
 	  evil-normal-state-cursor  'box
