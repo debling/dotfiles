@@ -8,15 +8,12 @@
   (projectile-mode 1)
   (setq projectile-completion-system 'ivy)
   (use-package org-projectile
-    :bind (("C-c n p" . org-projectile-project-todo-completing-read)
-           ("C-c c" . org-capture))
+    :bind ("C-c n p" . org-projectile-project-todo-completing-read)
     :config
-    (org-projectile-per-project)
-    (setq org-projectile-per-project-filepath "TODO.org"
-	  org-agenda-files (append org-agenda-files (org-projectile-todo-files))
-	  org-projectile-capture-template "* TODO %?\n%U\n%a\n"
-	  org-confirm-elisp-link-function nil)
-    (push (org-projectile-project-todo-entry) org-capture-templates)))
+    (progn
+      (setq org-projectile-projects-file (concat org-directory "projects.org" ))
+      (setq org-agenda-files (append org-agenda-files (org-projectile-todo-files)))
+      (push (org-projectile-project-todo-entry) org-capture-templates))))
 
 (use-package counsel-projectile
   :bind
