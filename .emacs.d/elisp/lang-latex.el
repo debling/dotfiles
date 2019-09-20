@@ -7,7 +7,7 @@
 	 (TeX-mode . turn-on-reftex)
 	 (TeX-mode . latex-math-mode)
 	 (TeX-mode . tex-company-setup)
-	 (TeX-mode . auctex-latexmk-setup)
+	 (TeX-mode . auctex-latexmk-setup))
   :config
   (setq TeX-auto-save		t
 	TeX-parse-self		t
