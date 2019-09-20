@@ -1,11 +1,13 @@
 ;; -*- lexical-binding: t; -*-
 
-(let ((file-name-handler-alist nil))
+
+(let ((file-name-handler-alist nil)
+      (gc-cons-threshold most-positive-fixnum))
+
 
   (package-initialize)
 
-  (setq gc-cons-threshold most-positive-fixnum
-	load-prefer-newer t
+  (setq load-prefer-newer t
 	xterm-query-timeout nil
 	package--init-file-ensured t
 	package-enable-at-startup nil
@@ -24,12 +26,12 @@
 	version-control t
 	scroll-conservatively 100
 	dired-dwim-target t
-	system-packages-noconfirm t
 	show-trailing-whitespace t
 	user-mail-address "d.ebling8@gmail.com"
 	user-full-name "Denílson dos Santos Ebling"
 	indent-tabs-mode nil
-	custom-file "~/.emacs.d/custom.el")
+	custom-file "~/.emacs.d/custom.el"
+	scroll-margin 5)
 
   (unless (package-installed-p 'use-package)
     (package-refresh-contents)
@@ -135,4 +137,3 @@
   (require 'mail-config)
 
   (load "~/.emacs.d/custom.el" 'noerror))
-(setq gc-cons-threshold 50000000)
