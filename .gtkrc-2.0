@@ -2,7 +2,7 @@
 # Any customization should be done in ~/.gtkrc-2.0.mine instead.
 
 include "/home/dse/.gtkrc-2.0.mine"
-gtk-theme-name="Adapta-Eta"
+gtk-theme-name="Adwaita"
 gtk-icon-theme-name="Adwaita"
 gtk-font-name="Source Sans Pro 10"
 gtk-cursor-theme-name="Adwaita"
