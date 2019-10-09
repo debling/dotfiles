@@ -8,16 +8,13 @@
   :config
   (evil-global-set-key 'normal (kbd "çh") 'help)
   (evil-mode)
-  (use-package evil-terminal-cursor-changer
-    :config
-    (evil-define-key 'normal org-mode-map (kbd "<tab>") #'org-cycle)
-    (setq evil-motion-state-cursor  'hbar
-	  evil-visual-state-cursor  'box
-	  evil-normal-state-cursor  'box
-	  evil-replace-state-cursor 'hbar
-	  evil-insert-state-cursor  'bar
-	  evil-emacs-state-cursor   'hbar)
-    (evil-terminal-cursor-changer-activate))
+  (evil-define-key 'normal org-mode-map (kbd "<tab>") #'org-cycle)
+
+  (defvar leader-map (make-sparse-keymap)
+    "Keymap for \"leader key\" shortcuts.")
+
+  (define-key evil-normal-state-map (kbd "SPC") leader-map)
+
   (evil-select-search-module 'evil-search-module 'evil-search))
 
 (use-package evil-collection
