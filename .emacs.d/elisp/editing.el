@@ -27,8 +27,8 @@
 (use-package evil-org
   :after org
   :functions evil-org-agenda-set-keys
-  :hook (org-mode . evil-org-mode)
-  (evil-org-mode-hook . evil-org-set-key-theme)
+  :hook ((org-mode . evil-org-mode)
+	 (evil-org-mode-hook . evil-org-set-key-theme))
   :config
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys))
@@ -40,19 +40,20 @@
   (require 'smartparens-config)
   (smartparens-global-mode t)
   (show-smartparens-global-mode t)
-  (evil-define-minor-mode-key 'normal 'smartparens-mode (kbd "çs") 'sp-forward-slurp-sexp)
-  (evil-define-minor-mode-key 'normal 'smartparens-mode (kbd "çb") 'sp-forward-barf-sexp)
-  (evil-define-minor-mode-key 'normal 'smartparens-mode (kbd "çS") 'sp-backward-slurp-sexp)
-  (evil-define-minor-mode-key 'normal 'smartparens-mode (kbd "çB") 'sp-backward-barf-sexp)
-  (evil-define-minor-mode-key 'normal 'smartparens-mode (kbd "çr") 'sp-raise-sexp)
-  (evil-define-minor-mode-key 'normal 'smartparens-mode (kbd "ç+") 'sp-join-sexp)
-  (evil-define-minor-mode-key 'normal 'smartparens-mode (kbd "ç-") 'sp-split-sexp)
-  (evil-define-minor-mode-key 'normal 'smartparens-mode (kbd "çwr") 'sp-wrap-round)
-  (evil-define-minor-mode-key 'normal 'smartparens-mode (kbd "çwc") 'sp-wrap-curly)
-  (evil-define-minor-mode-key 'normal 'smartparens-mode (kbd "çws") 'sp-wrap-square)
-  (use-package evil-smartparens
-    :delight
-    :hook (smartparens-mode . evil-smartparens-mode)))
+  (evil-define-minor-mode-key 'normal 'smartparens-mode
+    (kbd "çs") 'sp-forward-slurp-sexp
+    (kbd "çb") 'sp-forward-barf-sexp
+    (kbd "çS") 'sp-backward-slurp-sexp
+    (kbd "çB") 'sp-backward-barf-sexp
+    (kbd "çr") 'sp-raise-sexp
+    (kbd "ç+") 'sp-join-sexp
+    (kbd "ç-") 'sp-split-sexp
+    (kbd "çwr") 'sp-wrap-round
+    (kbd "çwc") 'sp-wrap-curly
+    (kbd "çws") 'sp-wrap-square)
+    (use-package evil-smartparens
+      :delight
+      :hook (smartparens-mode . evil-smartparens-mode)))
 
 (use-package avy
   :commands (avy-goto-char-2 avy-pop-mark)
