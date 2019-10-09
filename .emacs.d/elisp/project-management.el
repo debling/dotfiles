@@ -1,11 +1,17 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package projectile
-  :bind-keymap
-  ("C-c p" . projectile-command-map)
-  :delight '(:eval (concat " [" (projectile-project-name) ":" (symbol-name (projectile-project-type)) "]"))
+  :hook (after-init . (lambda ()
+			(projectile-mode 1)))
+  :delight '(:eval (concat " ["
+			   (projectile-project-name)
+			   ":"
+			   (symbol-name (projectile-project-type))
+			   "]"))
+  :bind (:map leader-map
+	      ("p" . projectile-command-map))
   :config
-  (projectile-mode 1)
+  (define-key leader-map (kbd "p") projectile-command-map)
   (setq projectile-completion-system 'ivy)
   (use-package org-projectile
     :bind ("C-c n p" . org-projectile-project-todo-completing-read)
