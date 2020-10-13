@@ -1,7 +1,7 @@
 [user]
 	email = d.ebling8@gmail.com
 	name = Denílson dos Santos Ebling
-	signingkey = CCBC8AA1AF062142
+	signingkey = 2302B23B7A5C777A
 
 [gpg]
 	program = gpg2
@@ -28,3 +28,5 @@
 
 [transfer]
 	fsckObjects = true
+[core]
+	editor = nvim
