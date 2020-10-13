@@ -1,5 +1,53 @@
 super + e
-	emacsclient -c
+      emacsclient -c
 
 super + c
-	emacsclient -ne '(dse/org-capture-popup)'
+      emacsclient -ne '(dse/org-capture-popup)'
+
+Print
+      $HOME/Scripts/screenshot
+
+super + F11
+      pkill -USR1 -x sxhkd
+
+super + w
+      firefox
+
+super + Return
+      alacritty
+
+XF86AudioMute
+	amixer -q sset Master toggle
+
+XF86Audio{Raise,Lower}Volume
+	amixer -q sset Master 5%{+,-}
+
+super + control + m
+	notify-send 'Mic state changed' "Mic $(amixer sset Capture toggle | grep -q '\[off\]' && echo 'OFF' || echo 'ON')"
+
+XF86Audio{Pause,Play,Stop}
+	playerctl {play, play-pause, stop}
+
+XF86Audio{Prev,Next}
+	playerctl {previous,next}
+
+XF86Audio{Rewind,Forward}
+	playerctl position {-,+}10
+
+super + F10
+      $HOME/Scripts/translate
+
+super + shift + BackSpace
+      reboot
+
+super + shift + p
+      passmenu
+
+super + shift + x
+      shutdown -h now
+
+super + shift + i
+      alacritty -e bash -ic "tmux attach -t irssi || tmux new -s irssi irssi"
+
+super + y
+      clipmenu
