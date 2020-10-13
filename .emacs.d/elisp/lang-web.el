@@ -32,8 +32,7 @@
 
   (use-package emmet-mode
     :delight
-    :hook ((web-mode . emmet-mode)
-	   (web-mode . emmet-preview-mode))
+    :hook (web-mode . emmet-mode)
     :config
     (setq emmet-move-cursor-between-quotes t))
 

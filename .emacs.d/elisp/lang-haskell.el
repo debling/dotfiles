@@ -5,20 +5,30 @@
 
 (use-package haskell-mode
   ;; haskell-mode swaps `C-m' and `C-j' behavior. Revert it back
-  :hook (haskell-mode . haskell-indentation-mode)
+  :hook ((haskell-mode . haskell-indentation-mode)
+	 (haskell-mode . interactive-haskell-mode))
   :bind (:map haskell-mode-map
               ("C-m" . newline)
-              ("C-j" . electric-newline-and-maybe-indent)))
+              ("C-j" . electric-newline-and-maybe-indent))
+  :config (setq haskell-process-log t))
 
-;; intero-mode for a complete IDE solution to haskell
-;; commercialhaskell.github.io/intero
-(use-package intero
-  :hook ((haskell-mode . intero-mode)
-	 (intero-mode . intero-company-backend)
-	 (intero-repl-mode . intero-company-backend))
-  :config
-  (defun intero-company-backend ()
-    (add-to-list (make-local-variable 'company-backends) '(company-intero))))
+(use-package dante
+  :after haskell-mode
+  :commands 'dante-mode
+  :init
+  (add-hook 'haskell-mode-hook 'flycheck-mode)
+  (add-hook 'haskell-mode-hook 'dante-mode))
+
+;; hindent - format haskell code automatically
+;; https://github.com/chrisdone/hindent
+(use-package hindent)
+
+(use-package dante
+  :after haskell-mode
+  :commands 'dante-mode
+  :init
+  (add-hook 'haskell-mode-hook 'flycheck-mode)
+  (add-hook 'haskell-mode-hook 'dante-mode))
 
 ;; hindent - format haskell code automatically
 ;; https://github.com/chrisdone/hindent

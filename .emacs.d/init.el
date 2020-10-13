@@ -1,11 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
-
 (let ((file-name-handler-alist nil)
       (gc-cons-threshold most-positive-fixnum))
-
-
-  (package-initialize)
 
   (setq load-prefer-newer t
 	xterm-query-timeout nil
@@ -31,11 +27,18 @@
 	user-full-name "Denílson dos Santos Ebling"
 	indent-tabs-mode nil
 	custom-file "~/.emacs.d/custom.el"
-	scroll-margin 5)
+	scroll-margin 5
+;; package-quickstart t
+	inhibit-x-resources t)
+
+  (eval-when-compile
+    (package-initialize))
 
   (unless (package-installed-p 'use-package)
     (package-refresh-contents)
-    (package-install 'use-package))
+    (progn
+      (package-install 'use-package)
+      (package-install 'delight)))
   (setq-default use-package-always-ensure t)
 
   (eval-when-compile
@@ -43,8 +46,7 @@
   (require 'delight)
   (require 'bind-key)
 
-  (add-to-list 'load-path (expand-file-name (concat user-emacs-directory "elisp")))
-  (add-to-list 'term-file-aliases '("st-256color" . "xterm"))
+  (setq-default use-package-enable-imenu-support t)
 
   (set-charset-priority 'unicode)
   (setq default-process-coding-system '(utf-8-unix . utf-8-unix)
@@ -58,6 +60,8 @@
   (tool-bar-mode 0)
   (save-place-mode 't)
 
+  (global-so-long-mode 1)
+
   (column-number-mode 1)
 
   (defalias 'yes-or-no-p 'y-or-n-p)
@@ -67,12 +71,12 @@
 
   (use-package delight
     :config
-    (delight 'abbrev-mode nil 'abbrev))
+    (delight '((abbrev-mode)
+	       (auto-revert-mode)))
+    (delight 'auto-revert-mode))
 
-  (use-package auto-compile
-    :config
-    (auto-compile-on-load-mode)
-    (auto-compile-on-save-mode))
+ (use-package autorevert
+   :delight auto-revert-mode)
 
   (use-package which-key
     :delight
@@ -83,8 +87,9 @@
     :config
     (setq undo-tree-auto-save-history t
 	  undo-tree-history-directory-alist `(("." . ,"/tmp/emacs/undo/"))
-          undo-tree-visualizer-timestamps t
-          undo-tree-visualizer-diff t)
+	  undo-tree-visualizer-timestamps t
+	  undo-tree-visualizer-diff t
+	  evil-undo-system 'undo-tree)
     (global-undo-tree-mode 1))
 
   (use-package recentf
@@ -99,41 +104,127 @@
     :delight
     :config (global-page-break-lines-mode))
 
-  (use-package leuven-theme
-    :config
-    (load-theme 'leuven t)
-    (scroll-bar-mode -1)
-    (add-to-list 'default-frame-alist '(font . "Source Code pro-16"))
-    (toggle-indicate-empty-lines))
+  (use-package doom-themes
+    :defer t
+    :defines display-line-numbers-type doom-gruvbox-dark-variant
+    :hook ((prog-mode   . display-line-numbers-mode)
+	   (term-mode   . dse/disable-line-numbers)
+	   (eshell-mode . dse/disable-line-numbers)
+	   (vterm-mode  . dse/disable-line-numbers)
+	   (after-init  . dse/apply-theme)
+	   (shell-mode  . dse/disable-line-numbers))
+    :init
+    (defun dse/apply-theme ()
+      (load-theme 'modus-operandi t)
+      (let ((font "JetBrains Mono"))
+	(setq default-frame-alist `((vertical-scroll-bars)
+				    (font . ,(concat font "-14"))))
+	(set-face-attribute 'default            nil :font font :height 140)
+	(set-face-attribute 'mode-line          nil :font font :height 100)
+	(set-face-attribute 'mode-line-inactive nil :font font :height 100)
+	;; (set-face-attribute 'default            nil :background "#111213")
+	(set-face-attribute 'font-lock-constant-face nil :weight 'bold)
+
+	(set-face-attribute 'font-lock-function-name-face nil
+			    :weight 'bold
+			    :slant 'italic)
+	) ; 5% darker
+      (setq display-line-numbers-type 'relative)
+      (setq doom-gruvbox-dark-variant "hard")
+      (scroll-bar-mode -1)
+      (blink-cursor-mode -1)
+      ;; (global-hl-line-mode)
+      (toggle-indicate-empty-lines))
+    (defun dse/disable-line-numbers ()
+      (display-line-numbers-mode -1)
+      (setq-local scroll-margin 0)
+      (setq-local indicate-empty-lines nil)))
 
   (global-set-key (kbd "C-x e") 'eshell)
+  (global-set-key (kbd "C-x t") 'vterm)
+  (global-set-key (kbd "C-x C-b") 'ibuffer-list-buffers)
 
-  (require 'editing)
-  (require 'completion-engine)
+  (use-package dired
+    :ensure nil
+    :defer t
+    :config
+    (setq dired-recursive-copies 'always
+	  dired-listing-switches "-alhv --group-directories-first"
+	  dired-hide-details-mode 't))
 
-  (require 'lang-c)
-  (require 'lang-clojure)
-  (require 'lang-commonlisp)
-  (require 'lang-elisp)
-  (require 'lang-erlang)
-  (require 'lang-general)
-  (require 'lang-go)
-  (require 'lang-haskell)
-  (require 'lang-java)
-  (require 'lang-latex)
-  (require 'lang-markdown)
-  (require 'lang-nix)
-  (require 'lang-org)
-  (require 'lang-python)
-  (require 'lang-scheme)
-  (require 'lang-shell)
-  (require 'lang-sql)
-  (require 'lang-web)
-  (require 'lang-misc)
+  (use-package general
+    :config
+    (general-create-definer leader-key
+      :prefix "SPC")
+    (leader-key
+      :states 'normal
+      :keymaps 'override
+      "p"    project-prefix-map
+      "gg" #'magit-status
+      "ff" #'find-file
+      "fr" #'ranger
+      "x"  #'counsel-M-x
+      "k"  #'kill-current-buffer
+      "t"  #'counsel-semantic-or-imenu
+      "b"  #'counsel-switch-buffer
+      "mm" #'emms
+      "mx" #'emms-pause
+      "mX" #'emms-stop
+      "mr" #'emms-random
+      "mh" #'emms-seek-backward
+      "mH" #'emms-next
+      "ml" #'emms-seek-forward
+      "mL" #'emms-previous))
 
-  (require 'project-management)
-  (require 'window-management)
+  (use-package ranger
+    :commands (ranger)
+    :config
+    (setq ranger-cleanup-eagerly t
+	  ranger-parent-depth 0
+	  ranger-max-preview-size 1
+	  ranger-dont-show-binary t
+	  ranger-preview-delay 0.040
+	  ranger-excluded-extensions '("mkv" "iso" "mp4")))
 
-  (require 'mail-config)
+  (use-package password-store)
+
+  (use-package direnv
+    :config
+    (direnv-mode))
+
+  (use-package langtool
+    :config
+    (setq langtool-http-server-host "localhost"
+	  langtool-http-server-port 8081
+	  langtool-default-language "pt-BR"
+	  langtool-mother-tongue    "pt-BR"))
+
+  (add-hook 'delete-terminal-functions 'recentf-save-list)
+
+  (require 'completion-engine "/home/dse/.emacs.d/elisp/completion-engine")
+  (require 'editing "/home/dse/.emacs.d/elisp/editing")
+  (require 'lang-c "/home/dse/.emacs.d/elisp/lang-c")
+  (require 'lang-clojure "/home/dse/.emacs.d/elisp/lang-clojure")
+  (require 'lang-elisp "/home/dse/.emacs.d/elisp/lang-elisp")
+  (require 'lang-general "/home/dse/.emacs.d/elisp/lang-general")
+  (require 'lang-go "/home/dse/.emacs.d/elisp/lang-go")
+  (require 'lang-haskell "/home/dse/.emacs.d/elisp/lang-haskell")
+  (require 'lang-java "/home/dse/.emacs.d/elisp/lang-java")
+  (require 'lang-latex "/home/dse/.emacs.d/elisp/lang-latex")
+  (require 'lang-markdown "/home/dse/.emacs.d/elisp/lang-markdown")
+  (require 'lang-misc "/home/dse/.emacs.d/elisp/lang-misc")
+  (require 'lang-nix "/home/dse/.emacs.d/elisp/lang-nix")
+  (require 'lang-org "/home/dse/.emacs.d/elisp/lang-org")
+  (require 'lang-python "/home/dse/.emacs.d/elisp/lang-python")
+  (require 'lang-shell "/home/dse/.emacs.d/elisp/lang-shell")
+  (require 'lang-sql "/home/dse/.emacs.d/elisp/lang-sql")
+  (require 'lang-web "/home/dse/.emacs.d/elisp/lang-web")
+  (require 'mail-config "/home/dse/.emacs.d/elisp/mail-config")
+  (require 'project-management "/home/dse/.emacs.d/elisp/project-management")
+  (require 'utils "/home/dse/.emacs.d/elisp/utils")
+  (require 'window-management "/home/dse/.emacs.d/elisp/window-management")
 
   (load "~/.emacs.d/custom.el" 'noerror))
+
+(setq gc-cons-threshold 100000000
+      read-process-output-max (* 1024 1024))

@@ -6,17 +6,17 @@
   :config
   (setq c-default-style "k&r"
 	sp-escape-quotes-after-insert nil))
-(use-package ccls
-  :hook ((c-mode c++-mode) . ccls/enable)
-  :config
-  (setq ccls-initialization-options '(:cacheDirectory "/tmp/ccls"))
-  (defun ccls/enable ()
-    (require 'ccls)
-    (lsp)
-    (make-local-variable 'company-lsp-cache-candidates)
-    (make-local-variable 'lsp-enable-indentation)
-    (setq company-lsp-cache-candidates nil
-	  lsp-enable-indentation nil)))
+;; (use-package ccls
+;;   :hook ((c-mode c++-mode) . ccls/enable)
+;;   :config
+;;   (setq ccls-initialization-options '(:cacheDirectory "/tmp/ccls"))
+;;   (defun ccls/enable ()
+;;     (require 'ccls)
+;;     (lsp)
+;;     (make-local-variable 'company-lsp-cache-candidates)
+;;     (make-local-variable 'lsp-enable-indentation)
+;;     (setq company-lsp-cache-candidates nil
+;; 	  lsp-enable-indentation nil)))
 
 (add-hook 'c-mode-hook
 	  (lambda ()

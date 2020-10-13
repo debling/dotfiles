@@ -1,21 +1,25 @@
 ;; -*- lexical-binding: t; -*-
 
+(c-set-offset 'case-label '+)
+
 (use-package editorconfig
-  :ensure t
-  :hook (after-init . editorconfig-mode))
+  :delight
+  :defer t
+  :config (editorconfig-mode))
 
 (use-package flycheck
+  :defer t
   :hook (prog-mode . flycheck-mode))
 
 (use-package flyspell
   :delight
-  :hook ((prog-mode . flyspell-prog-mode)
-	 (text-mode . flyspell-mode))
+  :defer t
   :bind ("<f8>" . switch-dictionary)
   :config
   (setq ispell-program-name "aspell"
 	ispell-extra-args '("--sug-mode=ultra" "--run-together")
-	ispell-dictionary "pt_BR")
+	ispell-dictionary "pt_BR"
+	ispell-alternate-dictionary "/home/dse/repos/IntelliJ.Portuguese.Brazil.Dictionary/portuguese-brazil.dic")
   (defun switch-dictionary()
     (interactive)
     (let* ((dic ispell-current-dictionary)
@@ -26,61 +30,54 @@
     (flyspell-buffer))
   (advice-add 'ispell-pdict-save :after #'flyspell-buffer-after-pdict-save))
 
-(use-package lsp-mode
-  :commands lsp
-  :bind (:map evil-normal-state-local-map
-	      ("gd" . lsp-find-definition))
-  :init
-  (setq lsp-prefer-flymake nil))
-(use-package lsp-ui
-  :commands lsp-ui-mode
-  :config (set-face-background 'lsp-ui-doc-background "#f4ebd7"))
+;; (use-package yasnippet
+;;   :delight yas-minor-mode
+;;   :defer t
+;;   :hook ((term-mode-hook . (lambda()
+;; 			     (yas-minor-mode -1)))
+;; 	 (prog-mode . yas-minor-mode))
+;;   :config
+;;   (use-package yasnippet-snippets))
 
-(use-package dap-mode
-  :config
-  (dap-mode t)
-  (dap-ui-mode t))
 
 (use-package yasnippet
+  :commands (yas-global-mode yas-minor-mode)
   :delight yas-minor-mode
-  :hook ((term-mode-hook . (lambda()
-			     (yas-minor-mode -1)))
-	 (after-init . yas-global-mode))
-  :config
-  (use-package yasnippet-snippets))
+  :init
+  (progn
+    (defvar yas-global-mode nil)
+    (use-package yasnippet-snippets :defer t)
+
+    (defun maple/load-yasnippet ()
+      (unless yas-global-mode (yas-global-mode 1))
+      (yas-minor-mode 1))
+    (add-hook 'prog-mode-hook 'maple/load-yasnippet)
+    ))
+
 
 (use-package company
-  :hook (after-init . global-company-mode)
   :delight
+  :hook (after-init . global-company-mode)
   :bind (:map company-active-map
 	      ("C-n" . company-select-next)
 	      ("C-p" . company-select-previous)
+	      ("C-j" . nil)
+	      ("C-k" . nil)
 	      ("M-n" . nil)
 	      ("M-p" . nil)
 	      ("SPC" . nil)
-	      ("RET" . company-complete-selection))
+	      ("TAB" . nil))
   :config
-  (setq company-idle-delay 0.3
-	company-minimum-prefix-length 0
-	company-require-match nil)
-  (company-tng-configure-default)
-  (use-package company-statistics
-    :hook (company-mode . company-statistics-mode)))
+  ;; (setq company-idle-delay                0.3
+  ;; 	company-minimum-prefix-length     0
+  ;; 	company-require-match             nil)
+;; (use-package company-statistics
+;;     :hook (company-mode . company-statistics-mode))
+  )
 
 (use-package rainbow-delimiters
   :hook (prog-mode .  rainbow-delimiters-mode))
 
-(use-package nlinum-relative
-  :bind (:map evil-normal-state-map
-	      ("<f7>" . nlinum-mode))
-  :hook (nlinum-mode . nlinum-relative-on)
-  :config
-  (setq nlinum-format "%d ")
-  (nlinum-relative-setup-evil))
-
-(use-package olivetti
-  :hook (text-mode . olivetti-mode)
-  :config (setq-default olivetti-body-width 80))
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (add-hook 'prog-mode-hook 'electric-pair-mode)
@@ -90,46 +87,18 @@
   :config
   (global-eldoc-mode 1))
 
-(use-package counsel-gtags
-  :after counsel
-  :delight
-  :bind (:map counsel-gtags-mode-map
-	      ("M-t" . counsel-gtags-find-definition)
-	      ("M-r" . counsel-gtags-find-reference)
-	      ("M-s" . counsel-gtags-find-symbol)
-	      ("M-," . counsel-gtags-go-backward))
-  :hook ((c-mode c++-mode java-mode asm-mode ). counsel-gtags-mode)
-  :config
-  (evil-define-key 'evil-insert-state 'counsel-gtags-mode-map (kbd "gd") 'counsel-gtags-dwim)
-  (with-eval-after-load 'company
-    (add-to-list 'company-backends 'company-gtags)))
-
-(use-package subword
-  :delight
-  :config
-  (global-subword-mode))
-
-(setq compilation-finish-functions
-      (lambda (_ str)
-      	(when (not (string-match ".*exited abnormally.*" str))
-      	  (progn
-      	    (run-at-time "1.5 sec" nil
-      			 (lambda ()
-      			   (select-window (get-buffer-window (get-buffer-create "*compilation*")))
-      			   (quit-window)))
-      	    (message "No Compilation Errors!")))))
-
 (require 'ansi-color)
 (defun colorize-compilation ()
   (when (eq major-mode 'compilation-mode)
     (ansi-color-apply-on-region compilation-filter-start (point-max))))
 (add-hook 'compilation-filter-hook 'colorize-compilation)
+(setq compilation-scroll-output t)
 
 (use-package executable
   :ensure nil
+  :defer t
   :hook
-  ((after-save .
-    executable-make-buffer-file-executable-if-script-p)))
+  ((after-save . executable-make-buffer-file-executable-if-script-p)))
 
 (provide 'lang-general)
 ;;; lang-general.el ends here

@@ -7,9 +7,9 @@
 	      ("C-k" . windmove-up)
 	      ("C-l" . windmove-right)))
 
-(use-package zoom
-  :delight
-  :hook (after-init . zoom-mode))
+;; (use-package zoom
+;;   :delight
+;;   :hook (after-init . zoom-mode))
 
 (provide 'window-management)
-;;; buffer-management ends here
+;;; window-management ends here

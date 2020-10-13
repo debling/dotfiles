@@ -26,6 +26,12 @@
   :hook ((lisp-mode . eros-mode)
 	 (emacs-lisp-mode . eros-mode)))
 
+(defun zakame/imenu-use-package ()
+  (add-to-list 'imenu-generic-expression
+               '("Used Packages"
+                 "\\(^\\s-*(use-package +\\)\\(\\_<.+\\_>\\)" 2)))
+(add-hook 'emacs-lisp-mode-hook #'zakame/imenu-use-package)
+
 
 (provide 'lang-elisp)
 ;;; lang-elisp.el ends here
