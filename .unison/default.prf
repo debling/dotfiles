@@ -1,9 +1,0 @@
-# Unison preferences file
-path = Org
-path = Scripts
-path = Uni
-path = Workspace
-prefer = newer
-root = /home/dse/
-root = ssh://dse@192.168.25.8/
-times = true

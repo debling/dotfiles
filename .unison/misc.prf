@@ -1,8 +1,0 @@
-# Unison preferences
-path = Music
-path = Books
-path = learning
-prefer = newer
-root = /home/dse/
-root = ssh://dse@192.168.25.8/
-times = true
