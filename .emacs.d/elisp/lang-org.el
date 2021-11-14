@@ -4,6 +4,7 @@
 	 (org-babel-after-execute . org-redisplay-inline-images))
   :bind (("C-c l" . org-store-link)
 	 ("C-c a" . org-agenda))
+  :after evil
   :delight org-indent-mode
   :functions (evil-define-key)
   :defines (org-plantuml-jar-path
@@ -106,6 +107,10 @@
 (setq org-latex-listings 'minted)
 
 (setq org-latex-pdf-process '( "latexmk -shell-escape -bibtex -f -pdf %f"))
+
+(use-package ox-reveal
+  :config
+  (setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js"))
 
 (provide 'lang-org)
 ;;; lang-org.el ends here

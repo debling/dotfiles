@@ -4,7 +4,6 @@
 (defconst jdt-jar-path "/home/dse/.emacs.d/jdt/plugins/org.eclipse.equinox.launcher_1.5.700.v20200207-2156.jar")
 (defconst jdt-extra-jvm-args '("-noverify"
 			       "-javaagent:/home/dse/.emacs.d/lombok.jar"
-			       "-Xbootclasspath/a:/home/dse/.emacs.d/lombok.jar"
 			       "--add-modules=ALL-SYSTEM"
 			       "--add-opens"
 			       "java.base/java.util=ALL-UNNAMED"
@@ -45,7 +44,8 @@ If INTERACTIVE, prompt user for details."
   :functions eglot--eclipse-jdt-contact
   :config
   (add-to-list 'eglot-server-programs '(java-mode . my-eclipse-jdt-contact))
-  (add-to-list 'eglot-server-programs '(dart-mode . dart-lsp-contact)))
+  (add-to-list 'eglot-server-programs '(dart-mode . dart-lsp-contact))
+  (setq eglot-sync-connect nil))
 
 (use-package java-snippets
   :defer t

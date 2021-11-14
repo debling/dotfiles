@@ -4,7 +4,6 @@
 
 (use-package editorconfig
   :delight
-  :defer t
   :config (editorconfig-mode))
 
 (use-package flycheck
@@ -13,7 +12,7 @@
 
 (use-package flyspell
   :delight
-  :defer t
+  :hook (text-mode . flyspell-mode)
   :bind ("<f8>" . switch-dictionary)
   :config
   (setq ispell-program-name "aspell"
@@ -29,16 +28,6 @@
   (defun flyspell-buffer-after-pdict-save (&rest _)
     (flyspell-buffer))
   (advice-add 'ispell-pdict-save :after #'flyspell-buffer-after-pdict-save))
-
-;; (use-package yasnippet
-;;   :delight yas-minor-mode
-;;   :defer t
-;;   :hook ((term-mode-hook . (lambda()
-;; 			     (yas-minor-mode -1)))
-;; 	 (prog-mode . yas-minor-mode))
-;;   :config
-;;   (use-package yasnippet-snippets))
-
 
 (use-package yasnippet
   :commands (yas-global-mode yas-minor-mode)
@@ -71,16 +60,13 @@
   ;; (setq company-idle-delay                0.3
   ;; 	company-minimum-prefix-length     0
   ;; 	company-require-match             nil)
-;; (use-package company-statistics
-;;     :hook (company-mode . company-statistics-mode))
-  )
+  (use-package company-statistics
+    :hook (company-mode . company-statistics-mode)))
 
 (use-package rainbow-delimiters
   :hook (prog-mode .  rainbow-delimiters-mode))
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
-
-(add-hook 'prog-mode-hook 'electric-pair-mode)
 
 (use-package eldoc
   :delight
@@ -99,6 +85,10 @@
   :defer t
   :hook
   ((after-save . executable-make-buffer-file-executable-if-script-p)))
+
+(use-package editorconfig
+  :config
+  (editorconfig-mode 1))
 
 (provide 'lang-general)
 ;;; lang-general.el ends here

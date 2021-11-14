@@ -2,23 +2,21 @@
 
 (use-package nix-mode
   :commands nix-eshell nix-unpack nix-repl
-  :hook (nix-mode . company-nix-setup)
   :bind (:map nix-mode-map
 	      ("C-c C-o" . helm-nixos-options)
 	      ("C-. u" . nix-update-fetch))
   :config
   (nix-prettify-global-mode 1)
-  (add-to-list (make-local-variable 'company-backends) 'company-nix)
 
   (use-package nixos-options)
 
-  ;; (use-package company-nixos-options
-  ;;   :after nixos-options
-  ;;   :hook (nix-mode . company-nix-setup)
-  ;;   :config
-  ;;   (defun company-nix-setup ()
-  ;;     (add-to-list (make-local-variable 'company-backends)
-  ;; 		   'company-nixos-options)))
+  (use-package company-nixos-options
+    :after nixos-options
+    :hook (nix-mode . company-nix-setup)
+    :config
+    (defun company-nix-setup ()
+      (add-to-list (make-local-variable 'company-backends)
+		   'company-nixos-options)))
 
   (use-package helm-nixos-options
     :after nixos-options

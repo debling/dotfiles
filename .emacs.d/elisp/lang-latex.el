@@ -1,7 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 
-(use-package tex
-  :ensure auctex
+(use-package auctex
   :commands (company-auctex-init)
   :hook ((TeX-mode . flycheck-mode)
 	 (TeX-mode . turn-on-reftex)
